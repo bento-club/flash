@@ -1,25 +1,26 @@
 {
-    "name": "file-transfer-app",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vue-tsc && vite build",
-        "preview": "vite preview"
-    },
-    "dependencies": {
-        "radix-vue": "0.2.2",
-        "vue": "3.3.4"
-    },
-    "devDependencies": {
-        "@vitejs/plugin-vue": "4.2.3",
-        "autoprefixer": "10.4.15",
-        "postcss": "8.4.30",
-        "prettier": "3.0.3",
-        "tailwindcss": "3.3.3",
-        "typescript": "5.0.2",
-        "vite": "4.4.5",
-        "vue-tsc": "1.8.5"
-    }
+  "name": "file-transfer-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "radix-vue": "0.2.2",
+    "vue": "3.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.6.2",
+    "@vitejs/plugin-vue": "4.2.3",
+    "autoprefixer": "10.4.15",
+    "postcss": "8.4.30",
+    "prettier": "3.0.3",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.0.2",
+    "vite": "4.4.5",
+    "vue-tsc": "1.8.5"
+  }
 }
