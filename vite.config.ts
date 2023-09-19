@@ -38,8 +38,6 @@ function getPathAliases(tsconfigPath: string) {
     })
     .join("\n");
 
-  console.log(contents);
-
   const config = JSON.parse(contents);
 
   const paths = config.compilerOptions.paths;
