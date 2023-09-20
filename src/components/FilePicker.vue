@@ -1,6 +1,6 @@
 <template>
   <label
-    class="border border-neutral-200 rounded-md flex flex-col items-center justify-center p-4"
+    class="file-picker border border-neutral-200 rounded-md flex flex-col items-center justify-center p-4"
   >
     <div class="font-medium">Upload a file</div>
     <div class="mt-1 text-neutral-500">PNG, JPG, PDF, GIF etc</div>
@@ -18,4 +18,8 @@ withDefaults(defineProps<FilePickerProps>(), {
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.file-picker {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+</style>
