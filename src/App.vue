@@ -1,5 +1,6 @@
 <template>
   <div class="p-4">
+    <h1 class="font-medium text-lg mb-4">Share files</h1>
     <FilePicker name="test-new" />
   </div>
 </template>
