@@ -9,6 +9,7 @@ export default {
         },
         neutral: {
           200: "#E5E7EB",
+          300: "#D1D5DB",
           500: "#6B7280",
         },
       },

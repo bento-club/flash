@@ -10,6 +10,12 @@
       :progress="30"
     />
 
+    <div class="mt-6">
+      <h2 class="text-lg font-medium">File link</h2>
+
+      <CopyLink class="mt-4" link="https://google.com" />
+    </div>
+
     <div class="flex flex-col items-center justify-center mt-6">
       <div class="relative w-full">
         <h3
@@ -26,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import CopyLink from "#src/components/CopyLink.vue";
 import FilePicker from "#src/components/FilePicker.vue";
 import FileProgress from "#src/components/FileProgress.vue";
 import QRCode from "#src/components/QRCode.vue";
