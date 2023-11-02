@@ -1,7 +1,10 @@
 <template>
   <div class="p-4">
-    <h1 class="font-medium text-lg mb-4">Share files</h1>
-    <FilePicker name="test-new" />
+    <h1 class="mb-4 text-lg font-medium">Share files</h1>
+    <FilePicker
+      name="test-new"
+      @select="console.log('file selected: ', $event)"
+    />
 
     <FileProgress
       class="mt-4"

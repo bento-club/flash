@@ -1,21 +1,43 @@
 <template>
   <label
-    class="file-picker border border-neutral-200 rounded-md flex flex-col items-center justify-center p-4"
+    class="file-picker border-neutral-200 flex flex-col items-center p-4 border rounded-md cursor-pointer"
   >
-    <div class="font-medium">Upload a file</div>
-    <div class="mt-1 text-neutral-500">PNG, JPG, PDF, GIF etc</div>
-    <input class="sr-only" type="file" :name="name" />
+    <FolderPlusIcon class="w-8 h-auto text-[#6941C6]" />
+
+    <div class="flex flex-col items-center w-full mt-3">
+      <div class="font-medium">Upload a file</div>
+      <div class="text-neutral-500 mt-1">PNG, JPG, PDF, GIF etc</div>
+    </div>
+    <input class="sr-only" type="file" :name="name" @input="onSelectFile" />
   </label>
 </template>
 
 <script setup lang="ts">
+import FolderPlusIcon from "#src/icons/FolderPlusIcon.vue";
+
 export interface FilePickerProps {
   name?: string;
 }
 
+export type FilePickerEvents = {
+  select: [files: FileList];
+};
+
 withDefaults(defineProps<FilePickerProps>(), {
   name: "fileInput",
 });
+
+const emit = defineEmits<FilePickerEvents>();
+
+function onSelectFile(event: Event) {
+  const target = event.target as HTMLInputElement;
+
+  if (!target.files) {
+    return;
+  }
+
+  emit("select", target.files);
+}
 </script>
 
 <style scoped lang="scss">
