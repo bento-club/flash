@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <canvas :id="id" ref="el"></canvas>
-  </div>
+    <div>
+        <canvas :id="id" ref="el"></canvas>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -10,26 +10,26 @@ import { toCanvas } from "qrcode";
 import { onMounted, ref } from "vue";
 
 export interface QRCodeProps {
-  id?: string;
-  text: string;
+    id?: string;
+    text: string;
 }
 
 const props = withDefaults(defineProps<QRCodeProps>(), {
-  id: () => uniqueId("qr-code"),
+    id: () => uniqueId("qr-code"),
 });
 
 const el = ref<HTMLCanvasElement>();
 
 onMounted(async () => {
-  if (!el) {
-    return;
-  }
+    if (!el) {
+        return;
+    }
 
-  try {
-    await toCanvas(el.value, props.text);
-  } catch {
-    console.error("canvas generation failed");
-  }
+    try {
+        await toCanvas(el.value, props.text);
+    } catch {
+        console.error("canvas generation failed");
+    }
 });
 </script>
 
