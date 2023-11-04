@@ -1,13 +1,11 @@
 <template>
-    <div>
-        <canvas :id="id" ref="el"></canvas>
-    </div>
+    <canvas class="w-full max-w-full" :id="id" ref="el"></canvas>
 </template>
 
 <script setup lang="ts">
 import { uniqueId } from "lodash";
 import { toCanvas } from "qrcode";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 export interface QRCodeProps {
     id?: string;
@@ -20,17 +18,40 @@ const props = withDefaults(defineProps<QRCodeProps>(), {
 
 const el = ref<HTMLCanvasElement>();
 
-onMounted(async () => {
-    if (!el) {
+onMounted(() => {
+    setHeightToWidth();
+});
+
+function setHeightToWidth() {
+    if (!el.value) {
         return;
     }
 
+    el.value.height = el.value.width;
+}
+
+async function generateQR(text: string, el: HTMLCanvasElement) {
     try {
-        await toCanvas(el.value, props.text);
+        await toCanvas(el, text, { width: el.width });
     } catch {
         console.error("canvas generation failed");
     }
-});
+}
+
+function watchAndRefreshQR() {
+    watch(
+        () => props.text,
+        async () => {
+            if (!el.value) {
+                return;
+            }
+
+            await generateQR(props.text, el.value);
+        },
+    );
+}
+
+watchAndRefreshQR();
 </script>
 
 <style scoped lang="scss"></style>
