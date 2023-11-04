@@ -2,13 +2,21 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { readFileSync } from "node:fs";
 import { fileURLToPath, URL } from "node:url";
+import basicSsl from "@vitejs/plugin-basic-ssl";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [vue(), basicSsl()],
     resolve: {
         alias: {
             ...getPathAliases("./tsconfig.json"),
+            //? See https://github.com/webtorrent/webtorrent/issues/2600#issuecomment-1659883605
+            webtorrent: fileURLToPath(
+                new URL(
+                    "./node_modules/webtorrent/dist/webtorrent.min.js",
+                    import.meta.url,
+                ),
+            ),
         },
     },
 });

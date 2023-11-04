@@ -5,6 +5,8 @@
         "module": "ESNext",
         "lib": ["ES2020", "DOM", "DOM.Iterable"],
         "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
 
         /* Bundler mode */
         "moduleResolution": "bundler",
@@ -21,6 +23,7 @@
         "noFallthroughCasesInSwitch": true,
 
         "baseUrl": ".",
+        "rootDir": ".",
         "paths": {
             "#src/*": ["./src/*"]
         },
