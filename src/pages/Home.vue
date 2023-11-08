@@ -4,20 +4,20 @@
         <FilePicker name="test-new" @select="seedFile" />
 
         <FileProgress
+            v-if="torrent"
             class="mt-4"
-            name="Portfolio.png"
-            size="525KB"
-            :progress="30"
+            :name="torrent.name"
+            :size="`${uploadProgress.bytes / 1024 / 1024}`"
+            :progress="uploadProgress.progress"
         />
 
         <div class="mt-6">
             <h2 class="text-lg font-medium">File link</h2>
 
             <CopyLink class="mt-4" :link="shareLink" />
-            <div>
-                {{ decodeURIComponent(magnetURI) }}
-            </div>
         </div>
+
+        {{ uploadProgress }}
 
         <div class="flex flex-col items-center justify-center mt-6">
             <div class="relative w-full">
@@ -48,47 +48,55 @@ import FilePicker from "#src/components/FilePicker.vue";
 import FileProgress from "#src/components/FileProgress.vue";
 import QRCode from "#src/components/QRCode.vue";
 import services from "#src/services";
-import { computed, ref, watch } from "vue";
+import { reactive, ref, unref, watch } from "vue";
 import { useRoute } from "vue-router";
 import WebTorrent from "webtorrent";
 
 const shareLink = ref("");
-const magnetURI = computed(() => {
-    if (!shareLink.value) {
-        return "";
-    }
-
-    try {
-        return new URL(shareLink.value).searchParams.get("magnet") || "";
-    } catch {
-        return "";
-    }
-});
-
 function setShareLink(magnetURI: string) {
     const link = new URL(
-        `http://${import.meta.env.VITE_HOST}:${window.location.port}`,
+        `${window.location.protocol}//${import.meta.env.VITE_HOST}:${
+            window.location.port
+        }`,
     );
     link.searchParams.set("magnet", magnetURI);
 
     shareLink.value = link.toString();
+
+    console.log("Go to link for download: ", unref(shareLink.value));
 }
 
-let torrent: WebTorrent.Torrent | undefined;
+const torrent = ref<WebTorrent.Torrent>();
 
 const ip = import.meta.env.VITE_HOST;
 
-function seedFile(files: FileList) {
-    torrent = services.torrent.seed(files[0]);
+const uploadProgress = reactive({
+    progress: 0,
+    uploaded: 0,
+    speed: 0,
+    bytes: 0,
+});
 
-    torrent.once("ready", () => {
-        if (!torrent) {
+function seedFile(files: FileList) {
+    torrent.value = services.torrent.seed(files[0]);
+
+    torrent.value.on("upload", (bytes) => {
+        uploadProgress.progress = torrent.value?.progress || 0;
+        uploadProgress.uploaded = torrent.value?.uploaded || 0;
+        uploadProgress.speed = torrent.value?.uploadSpeed || 0;
+        uploadProgress.bytes = bytes;
+    });
+
+    torrent.value.once("ready", () => {
+        if (!torrent.value) {
             return;
         }
 
-        console.log(torrent.magnetURI);
+        console.log("torrents: ", services.torrent.torrents);
 
-        setShareLink(torrent.magnetURI);
+        console.log(torrent.value.magnetURI);
+
+        setShareLink(torrent.value.magnetURI);
     });
 }
 
@@ -104,26 +112,50 @@ function watchAndDownloadFromURI() {
                 return;
             }
 
+            console.log("start downloading: ", route.query.magnet);
+
             downloadFromMagnetURI(route.query.magnet);
         },
+        { immediate: true },
     );
 }
 
 watchAndDownloadFromURI();
 
+const progress = reactive({
+    progress: 0,
+    downloaded: 0,
+    speed: 0,
+    bytes: 0,
+});
 function downloadFromMagnetURI(magnetURI: string) {
-    services.torrent.add(magnetURI, (torrent) => {
-        const file = torrent.files[0];
+    const downloadingTorrent = services.torrent.add(magnetURI);
 
-        file.getBlob((_err, blob) => {
-            if (!blob || !downloadEl.value) {
-                return;
-            }
+    console.log(downloadingTorrent);
 
-            downloadEl.value.href = URL.createObjectURL(blob);
+    downloadingTorrent.on("done", () => {
+        console.log("download complete: ", downloadingTorrent.files);
 
-            downloadEl.value.click();
-        });
+        const file = downloadingTorrent.files[0];
+
+        console.log("fileBlob: ", file, file.getBlob);
+
+        // file.getBlob((_err, blob) => {
+        //     if (!blob || !downloadEl.value) {
+        //         return;
+        //     }
+
+        //     downloadEl.value.href = URL.createObjectURL(blob);
+
+        //     downloadEl.value.click();
+        // });
+    });
+
+    downloadingTorrent.on("download", (bytes) => {
+        progress.bytes = bytes;
+        progress.downloaded = torrent.value?.downloaded || 0;
+        progress.progress = torrent.value?.progress || 0;
+        progress.speed = torrent.value?.downloadSpeed || 0;
     });
 }
 </script>
