@@ -1,22 +1,25 @@
 <template>
-    <div class="inline-block">
+    <div class="inline-block" :class="{ 'w-full': fullWidth }">
         <label
             v-if="label && !hideLabel"
             :for="id"
-            class="block mb-2 text-white capitalize"
+            class="block w-full mb-2 text-white capitalize"
         >
             {{ label }}
         </label>
         <input
             :id="id"
-            class="text-input error rounded-lg border border-[#334155] bg-[#0F172A] p-4 text-[#CBD5E1] placeholder:capitalize placeholder:text-[#64748B]"
+            class="text-input w-full rounded-lg border border-[#334155] bg-[#0F172A] p-4 text-[#CBD5E1] placeholder:capitalize placeholder:text-[#64748B]"
+            :class="{
+                error: error,
+            }"
             :type="type"
             :placeholder="placeholder"
         />
 
-        <div class="flex items-center mt-2">
+        <div v-if="error" class="flex items-center mt-2">
             <AlertIcon class="mr-1 h-4 w-auto text-[#F26060]" />
-            <p v-if="error" class="text-xs text-[#F26060]">{{ error }}</p>
+            <p class="text-xs text-[#F26060]">{{ error }}</p>
         </div>
     </div>
 </template>
@@ -57,7 +60,12 @@ export interface TextInputProps {
      * @description
      * Label will be still visible to screen readers
      */
-    hideLabel?: string;
+    hideLabel?: boolean;
+
+    /**
+     * When `true` input will expand to parent's width
+     */
+    fullWidth?: boolean;
 }
 
 withDefaults(defineProps<TextInputProps>(), {
