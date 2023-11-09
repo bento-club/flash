@@ -3,6 +3,7 @@ import { RouteRecordRaw, createRouter, createWebHistory } from "vue-router";
 const ChooseNamePage = () => import("#src/pages/ChooseNamePage.vue");
 
 const routes: RouteRecordRaw[] = [
+    { name: "home", path: "/", redirect: { name: "chooseName" } },
     { name: "chooseName", path: "/choose-name", component: ChooseNamePage },
 ];
 
