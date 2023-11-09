@@ -1,5 +1,5 @@
 <template>
-    <canvas class="w-full max-w-full" :id="id" ref="el"></canvas>
+    <canvas :id="id" ref="el" class="w-full max-w-full"></canvas>
 </template>
 
 <script setup lang="ts">
