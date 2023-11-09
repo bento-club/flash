@@ -6,3 +6,10 @@ body {
     font-family: "Lexend";
     caret-color: #7a5af8;
 }
+
+* {
+    font-variant-numeric: lining-nums proportional-nums;
+    font-feature-settings:
+        "dlig" on,
+        "salt" on;
+}
