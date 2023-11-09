@@ -1,6 +1,10 @@
 <template>
     <div class="inline-block">
-        <label v-if="label" :for="id" class="block mb-2 text-white capitalize">
+        <label
+            v-if="label && !hideLabel"
+            :for="id"
+            class="block mb-2 text-white capitalize"
+        >
             {{ label }}
         </label>
         <input
@@ -46,6 +50,14 @@ export interface TextInputProps {
      * Error message to display
      */
     error?: string;
+
+    /**
+     * Visually hide label
+     *
+     * @description
+     * Label will be still visible to screen readers
+     */
+    hideLabel?: string;
 }
 
 withDefaults(defineProps<TextInputProps>(), {
