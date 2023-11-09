@@ -7,4 +7,12 @@ export default {
     content: ["./index.html", "./src/**/*.{ts,tsx,vue}"],
     darkMode: ["class"],
     plugins: [animate],
+    theme: {
+        extend: {
+            fontFamily: {
+                lexend: ["Lexend"],
+                "space-grotek": ["Space Grotesk"],
+            },
+        },
+    },
 };
