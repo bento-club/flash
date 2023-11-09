@@ -9,7 +9,7 @@
         "preview": "vite preview",
         "format": "prettier --write .",
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
-        "clean": "rm -rf dist"
+        "clean": "rm -rf dist docs"
     },
     "dependencies": {
         "@fontsource/lexend": "5.0.17",
