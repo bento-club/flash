@@ -1,12 +1,12 @@
 <template>
-    <article class="flex h-screen flex-col bg-[#0F172A] px-4 pb-6 pt-3">
+    <article class="h-h-screen-d flex flex-col bg-[#0F172A] px-4 pb-6 pt-3">
         <header>
             <slot name="header"></slot>
         </header>
 
         <hr class="divider my-3" />
 
-        <main class="flex flex-col flex-grow">
+        <main class="flex flex-grow flex-col">
             <slot name="body"></slot>
         </main>
 

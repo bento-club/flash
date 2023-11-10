@@ -13,6 +13,9 @@ export default {
                 lexend: ["Lexend"],
                 "space-grotek": ["Space Grotesk"],
             },
+            height: {
+                "h-screen-d": "100dvh",
+            },
         },
     },
 };
