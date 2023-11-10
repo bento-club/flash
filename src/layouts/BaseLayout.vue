@@ -1,5 +1,5 @@
 <template>
-    <article class="flex min-h-screen flex-col bg-[#0F172A] px-4 pb-6 pt-3">
+    <article class="flex h-screen flex-col bg-[#0F172A] px-4 pb-6 pt-3">
         <header>
             <slot name="header"></slot>
         </header>
