@@ -20,7 +20,7 @@
                 <div class="flex justify-center">
                     <div class="flex flex-col items-center justify-center">
                         <AppButton id="create-space-btn" variant="rounded">
-                            <PlusIcon class="h-auto w-8" />
+                            <PlusIcon class="h-auto w-8 text-white" />
                         </AppButton>
 
                         <label
