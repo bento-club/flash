@@ -1,13 +1,14 @@
 <template>
     <button
         :type="type"
-        class="font-space-grotek bg-[#7A5AF8] p-4 font-medium capitalize text-white hover:bg-[#633CFF] active:bg-[#5024FF]"
+        class="bg-[#7A5AF8] p-4 font-space-grotek font-medium capitalize text-white hover:bg-[#633CFF] active:bg-[#5024FF]"
         :class="[
             {
                 'w-full': fullWidth,
             },
             [variant === 'rounded' ? 'rounded-full' : 'rounded-lg'],
         ]"
+        @click="emit('click')"
     >
         <slot></slot>
     </button>
@@ -31,10 +32,19 @@ export interface AppButtonProps {
     variant?: "rounded" | "normal";
 }
 
+export type AppButtonEvents = {
+    /**
+     * When user clicks on the button
+     */
+    click: [];
+};
+
 withDefaults(defineProps<AppButtonProps>(), {
     fullWidth: false,
     variant: "normal",
 });
+
+const emit = defineEmits<AppButtonEvents>();
 </script>
 
 <style scoped></style>
