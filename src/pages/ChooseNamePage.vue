@@ -13,7 +13,7 @@
         </template>
 
         <template #body>
-            <div class="flex flex-col justify-between flex-grow pt-3">
+            <div class="flex flex-grow flex-col justify-between pt-3">
                 <TextInput
                     class="w-full"
                     label="Enter your nickname"
@@ -22,7 +22,9 @@
                     full-width
                 />
 
-                <AppButton full-width>let's go</AppButton>
+                <RouterLink :to="{ name: 'listSpaces' }">
+                    <AppButton full-width>let's go</AppButton>
+                </RouterLink>
             </div>
         </template>
     </BaseLayout>
