@@ -1,10 +1,10 @@
 <template>
-    <article class="h-h-screen-d flex flex-col bg-[#0F172A] px-4 pb-6 pt-3">
+    <article class="flex h-h-screen-d flex-col bg-[#0F172A] px-4 pb-6 pt-3">
         <header>
             <slot name="header"></slot>
         </header>
 
-        <hr class="divider my-3" />
+        <AppDivider class="my-3" />
 
         <main class="flex flex-grow flex-col">
             <slot name="body"></slot>
@@ -16,18 +16,8 @@
     </article>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppDivider from "#src/components/AppDivider.vue";
+</script>
 
-<style scoped lang="scss">
-.divider {
-    border: none;
-    background-image: radial-gradient(
-        closest-side,
-        rgba(51, 65, 85, 0.25),
-        rgba(51, 65, 85, 1),
-        rgba(51, 65, 85, 0.25)
-    );
-    height: 1px;
-    width: 100%;
-}
-</style>
+<style scoped lang="scss"></style>
