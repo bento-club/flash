@@ -8,7 +8,7 @@
         "build": "vue-tsc && vite build",
         "preview": "vite preview",
         "format": "prettier --write .",
-        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts",
         "clean": "rm -rf dist docs"
     },
     "dependencies": {
