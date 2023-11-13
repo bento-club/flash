@@ -2,7 +2,9 @@
     <BaseLayout>
         <template #header>
             <section class="py-3">
-                <h1 class="font-space-grotek text-2xl font-bold text-[#F1F5F9]">
+                <h1
+                    class="font-space-grotesk text-2xl font-bold text-[#F1F5F9]"
+                >
                     Give yourself a nickname
                 </h1>
                 <p class="mt-2 text-sm leading-5 text-[#CBD5E1]">

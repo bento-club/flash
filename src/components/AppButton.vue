@@ -1,7 +1,7 @@
 <template>
     <button
         :type="type"
-        class="bg-[#7A5AF8] p-4 font-space-grotek font-medium capitalize text-white hover:bg-[#633CFF] active:bg-[#5024FF]"
+        class="font-space-grotesk bg-[#7A5AF8] p-4 font-medium capitalize text-white hover:bg-[#633CFF] active:bg-[#5024FF]"
         :class="[
             {
                 'w-full': fullWidth,
