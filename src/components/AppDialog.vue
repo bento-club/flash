@@ -100,7 +100,7 @@ function emitState(val: boolean) {
     animation: overlay-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
 
     &[data-state="closed"] {
-        animation: overlay-hide 150ms cubic-bezier(0.16, 1, 0.3, 1);
+        animation: overlay-hide 300ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 }
 
