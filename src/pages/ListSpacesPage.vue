@@ -1,12 +1,16 @@
 <template>
     <BaseLayout>
         <template #header>
-            <h1 class="font-space-grotesk text-xl font-bold text-[#F1F5F9]">
-                Hey, Shadow! 👋
-            </h1>
-            <p class="mt-2 text-sm text-[#CBD5E1]">
-                Share files by joining or creating a room
-            </p>
+            <div class="mb-x3">
+                <h1
+                    class="text-heading-medium font-space-grotesk text-primary font-bold"
+                >
+                    Hey, Shadow! 👋
+                </h1>
+                <p class="mt-x2 text-sm text-[#CBD5E1]">
+                    Share files by joining or creating a room
+                </p>
+            </div>
         </template>
 
         <template #body>

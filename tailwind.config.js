@@ -18,6 +18,10 @@ export default {
             },
             fontSize: {
                 "heading-small": ["1.125rem", { lineHeight: "1.6875rem" }],
+                "heading-medium": [
+                    "1.25rem",
+                    { lineHeight: "1.875rem", letterSpacing: "-0.4px" },
+                ],
                 "paragraph-small": ["0.875rem", { lineHeight: "1.3125rem" }],
                 "paragraph-x-small": ["0.75rem", { lineHeight: "1.125rem" }],
                 overline: [
