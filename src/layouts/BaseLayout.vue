@@ -1,6 +1,6 @@
 <template>
     <article class="h-screen-d bg-[#0F172A]">
-        <div class="flex h-full flex-col px-4 pb-6 pt-3">
+        <div class="mx-auto flex h-full max-w-3xl flex-col px-4 pb-6 pt-3">
             <header>
                 <slot name="header"></slot>
             </header>
