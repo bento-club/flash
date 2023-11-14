@@ -1,18 +1,20 @@
 <template>
-    <article class="flex h-h-screen-d flex-col bg-[#0F172A] px-4 pb-6 pt-3">
-        <header>
-            <slot name="header"></slot>
-        </header>
+    <article class="h-screen-d bg-[#0F172A]">
+        <div class="flex h-full flex-col px-4 pb-6 pt-3">
+            <header>
+                <slot name="header"></slot>
+            </header>
 
-        <AppDivider class="my-3" />
+            <AppDivider class="my-3" />
 
-        <main class="flex flex-grow flex-col">
-            <slot name="body"></slot>
-        </main>
+            <main class="flex flex-grow flex-col">
+                <slot name="body"></slot>
+            </main>
 
-        <footer>
-            <slot name="footer"></slot>
-        </footer>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+        </div>
     </article>
 </template>
 

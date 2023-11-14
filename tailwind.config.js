@@ -14,7 +14,7 @@ export default {
                 "space-grotesk": ["Space Grotesk"],
             },
             height: {
-                "h-screen-d": "100dvh",
+                "screen-d": "100dvh",
             },
             fontSize: {
                 "heading-small": ["1.125rem", { lineHeight: "1.6875rem" }],
