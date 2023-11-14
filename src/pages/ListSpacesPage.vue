@@ -10,11 +10,31 @@
         </template>
 
         <template #body>
-            <div class="flex flex-grow flex-col justify-between">
+            <div class="flex flex-col justify-between flex-grow">
                 <div>
-                    <h2 class="text-xs uppercase text-[#64748B]">
+                    <h2 class="text-overline text-placeholder py-x3 uppercase">
                         your spaces
                     </h2>
+
+                    <div class="gap-x6 mt-x3 flex flex-col">
+                        <SpaceCard
+                            type="local"
+                            :created-at="new Date()"
+                            name="local network space"
+                        />
+                        <SpaceCard
+                            state="active"
+                            name="Milky way galaxy"
+                            :created-at="new Date()"
+                            :count="14"
+                        />
+                        <SpaceCard
+                            state="active"
+                            name="andromeda"
+                            :created-at="new Date()"
+                            :count="69"
+                        />
+                    </div>
                 </div>
 
                 <div class="flex justify-center">
@@ -24,7 +44,7 @@
                             variant="rounded"
                             @click="openCreateSpaceModal"
                         >
-                            <PlusIcon class="h-auto w-8 text-white" />
+                            <PlusIcon class="w-8 h-auto text-white" />
                         </AppButton>
 
                         <label
@@ -48,6 +68,7 @@
 <script setup lang="ts">
 import AppButton from "#src/components/AppButton.vue";
 import CreateSpaceDialog from "#src/components/CreateSpaceDialog.vue";
+import SpaceCard from "#src/components/SpaceCard.vue";
 import PlusIcon from "#src/icons/PlusIcon.vue";
 import BaseLayout from "#src/layouts/BaseLayout.vue";
 import { ref } from "vue";
