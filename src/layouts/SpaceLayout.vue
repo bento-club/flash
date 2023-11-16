@@ -1,11 +1,24 @@
 <template>
-    <article>
-        <header>
-            <slot name="header"></slot>
+    <article class="h-screen-d bg-surface-primary px-x4 pt-x4 text-primary">
+        <header class="relative flex items-center justify-center py-x4">
+            <button class="absolute left-0 top-x4">
+                <ArrowLeft class="h-6 w-auto" />
+            </button>
+            <div class="flex items-center">
+                <SpaceIcon class="h-6 w-auto text-surface-brand" />
+                <h1 class="ml-x2 font-space-grotesk font-bold capitalize">
+                    Design Space
+                </h1>
+            </div>
         </header>
+        <AppDivider class="my-x2" />
     </article>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppDivider from "#src/components/AppDivider.vue";
+import ArrowLeft from "#src/icons/ArrowLeft.vue";
+import SpaceIcon from "#src/icons/SpaceIcon.vue";
+</script>
 
 <style scoped></style>
