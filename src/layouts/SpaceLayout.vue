@@ -11,7 +11,12 @@
                 </h1>
             </div>
         </header>
+
         <AppDivider class="my-x2" />
+
+        <section>
+            <slot></slot>
+        </section>
     </article>
 </template>
 
