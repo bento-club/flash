@@ -3,7 +3,7 @@
         <label
             v-if="label && !hideLabel"
             :for="id"
-            class="block w-full mb-2 text-white capitalize"
+            class="mb-2 block w-full capitalize text-white"
         >
             {{ label }}
         </label>
@@ -15,9 +15,10 @@
             }"
             :type="type"
             :placeholder="placeholder"
+            @input="onInput"
         />
 
-        <div v-if="error" class="flex items-center mt-2">
+        <div v-if="error" class="mt-2 flex items-center">
             <AlertIcon class="mr-1 h-4 w-auto text-[#F26060]" />
             <p class="text-xs text-[#F26060]">{{ error }}</p>
         </div>
@@ -66,12 +67,28 @@ export interface TextInputProps {
      * When `true` input will expand to parent's width
      */
     fullWidth?: boolean;
+
+    /**
+     * Model value of the input field
+     */
+    modelValue?: string;
 }
+
+export type TextInputEvents = {
+    "update:modelValue": [value: string];
+};
 
 withDefaults(defineProps<TextInputProps>(), {
     type: "text",
     id: () => useId(),
 });
+const emit = defineEmits<TextInputEvents>();
+
+function onInput(e: Event) {
+    const target = e.target as HTMLInputElement;
+
+    emit("update:modelValue", target.value);
+}
 </script>
 
 <style scoped lang="scss">
