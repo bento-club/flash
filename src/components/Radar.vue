@@ -6,6 +6,12 @@
             class="relative z-0 h-auto w-full"
         />
 
+        <img
+            :src="scannerImg"
+            alt="Scanner image"
+            class="scanner absolute left-0 top-0 h-auto w-full"
+        />
+
         <svg
             class="absolute left-0 top-0 z-10 h-auto w-full"
             viewBox="0 0 1260 1260"
@@ -193,16 +199,16 @@
                                 cx="555"
                                 cy="500"
                                 r="5.5"
-                                fill="#F85A5A"
-                                stroke="#F85A5A"
+                                fill="#rgba(248, 90, 90, 0)"
+                                stroke="#rgba(248, 90, 90, 0)"
                             />
                             <circle
                                 id="intersection-point_8"
                                 cx="492"
                                 cy="391"
                                 r="5.5"
-                                fill="#F85A5A"
-                                stroke="#F85A5A"
+                                fill="#rgba(248, 90, 90, 0)"
+                                stroke="#rgba(248, 90, 90, 0)"
                             />
                         </g>
                         <g id="cirlcles_2">
@@ -285,32 +291,32 @@
                         cx="423"
                         cy="273"
                         r="5.5"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_16"
                         cx="272"
                         cy="424"
                         r="5.5"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_17"
                         cx="391"
                         cy="493"
                         r="5.5"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_18"
                         cx="500"
                         cy="555"
                         r="5.5"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_19"
@@ -318,8 +324,8 @@
                         cy="836.119"
                         r="5.5"
                         transform="rotate(-61.9015 272.119 836.119)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_20"
@@ -327,8 +333,8 @@
                         cy="987.049"
                         r="5.5"
                         transform="rotate(-89.5326 423.049 987.049)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_21"
@@ -336,8 +342,8 @@
                         cy="987.155"
                         r="5.5"
                         transform="rotate(-151.037 836.155 987.155)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_22"
@@ -345,8 +351,8 @@
                         cy="837.118"
                         r="5.5"
                         transform="rotate(-178.858 987.119 837.118)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_23"
@@ -354,8 +360,8 @@
                         cy="423.319"
                         r="5.5"
                         transform="rotate(123.651 987.319 423.319)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_24"
@@ -363,8 +369,8 @@
                         cy="272.273"
                         r="5.5"
                         transform="rotate(92.6726 836.274 272.273)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_25"
@@ -372,8 +378,8 @@
                         cy="768.07"
                         r="5.5"
                         transform="rotate(-61.9015 391.306 768.07)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_26"
@@ -381,8 +387,8 @@
                         cy="869.049"
                         r="5.5"
                         transform="rotate(-89.5326 492.049 869.049)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_27"
@@ -390,8 +396,8 @@
                         cy="868.155"
                         r="5.5"
                         transform="rotate(-151.037 768.155 868.155)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_28"
@@ -399,8 +405,8 @@
                         cy="768.118"
                         r="5.5"
                         transform="rotate(-178.858 868.119 768.118)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_29"
@@ -408,8 +414,8 @@
                         cy="491.319"
                         r="5.5"
                         transform="rotate(123.651 868.319 491.319)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_30"
@@ -417,8 +423,8 @@
                         cy="391.273"
                         r="5.5"
                         transform="rotate(92.6726 768.274 391.273)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_31"
@@ -426,8 +432,8 @@
                         cy="705.119"
                         r="5.5"
                         transform="rotate(-61.9015 500.119 705.119)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_32"
@@ -435,8 +441,8 @@
                         cy="760.049"
                         r="5.5"
                         transform="rotate(-89.5326 555.218 760.049)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_33"
@@ -444,8 +450,8 @@
                         cy="760.155"
                         r="5.5"
                         transform="rotate(-151.037 705.155 760.155)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_34"
@@ -453,8 +459,8 @@
                         cy="705.118"
                         r="5.5"
                         transform="rotate(-178.858 759.119 705.118)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_35"
@@ -462,8 +468,8 @@
                         cy="554.652"
                         r="5.5"
                         transform="rotate(123.651 760.319 554.652)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                     <circle
                         id="intersection-point_36"
@@ -471,8 +477,8 @@
                         cy="500.273"
                         r="5.5"
                         transform="rotate(92.6726 705.274 500.273)"
-                        fill="#F85A5A"
-                        stroke="#F85A5A"
+                        fill="#rgba(248, 90, 90, 0)"
+                        stroke="#rgba(248, 90, 90, 0)"
                     />
                 </g>
             </g>
@@ -481,7 +487,22 @@
 </template>
 
 <script setup lang="ts">
-import radarBg from "#src/assets/radar-bg.png";
+import radarBg from "#src/assets/radar-bg.svg";
+import scannerImg from "#src/assets/radar-scanner.png";
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.scanner {
+    animation: scanning 3s linear infinite;
+}
+
+@keyframes scanning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+</style>
