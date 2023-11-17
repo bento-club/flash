@@ -8,11 +8,14 @@ const routes: RouteRecordRaw[] = [
     { name: "home", path: "/", redirect: { name: "chooseName" } },
     { name: "chooseName", path: "/choose-name", component: ChooseNamePage },
     {
-        name: "listSpaces",
         path: "/spaces",
+        redirect: {
+            name: "listSpaces",
+        },
         children: [
             {
                 path: "",
+                name: "listSpaces",
                 component: ListSpacesPage,
             },
             {
