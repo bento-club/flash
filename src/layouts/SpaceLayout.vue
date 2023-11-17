@@ -1,7 +1,7 @@
 <template>
     <article class="h-screen-d bg-surface-primary px-x4 pt-x4 text-primary">
         <header class="relative flex items-center justify-center py-x4">
-            <button class="absolute left-0 top-x4">
+            <button class="absolute left-0 top-x4" @click="onBackBtnClick">
                 <ArrowLeft class="h-6 w-auto" />
             </button>
             <div class="flex items-center">
@@ -24,6 +24,13 @@
 import AppDivider from "#src/components/AppDivider.vue";
 import ArrowLeft from "#src/icons/ArrowLeft.vue";
 import SpaceIcon from "#src/icons/SpaceIcon.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+function onBackBtnClick() {
+    router.back();
+}
 </script>
 
 <style scoped></style>

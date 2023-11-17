@@ -7,8 +7,9 @@
         @update:open="emitModalState"
         @close="emit('close')"
     >
-        <div class="py-x3 px-x4">
+        <div class="px-x4 py-x3">
             <TextInput
+                v-model="name"
                 label="Space name"
                 placeholder="Space name"
                 hide-label
@@ -17,7 +18,7 @@
         </div>
 
         <div class="px-x4 py-x3">
-            <AppButton full-width @click="emitModalState(false)">
+            <AppButton full-width @click="onCreateSpace">
                 create space
             </AppButton>
         </div>
@@ -29,6 +30,7 @@ import AppDialog from "#src/components/AppDialog.vue";
 import TextInput from "#src/components/TextInput.vue";
 import SpaceIcon from "#src/icons/SpaceIcon.vue";
 import AppButton from "#src/components/AppButton.vue";
+import { ref } from "vue";
 
 export interface CreateSpaceDialogProps {
     open: boolean;
@@ -36,6 +38,7 @@ export interface CreateSpaceDialogProps {
 
 export type CreateSpaceDialogEvents = {
     close: [];
+    create: [name: string];
     "update:open": [state: boolean];
 };
 
@@ -48,6 +51,13 @@ function emitModalState(value: boolean) {
     if (!value) {
         emit("close");
     }
+}
+
+const name = ref("");
+
+function onCreateSpace() {
+    emit("close");
+    emit("create", name.value);
 }
 </script>
 

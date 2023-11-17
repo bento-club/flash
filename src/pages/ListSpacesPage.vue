@@ -3,7 +3,7 @@
         <template #header>
             <div class="mb-x3">
                 <h1
-                    class="text-heading-medium font-space-grotesk text-primary font-bold"
+                    class="font-space-grotesk text-heading-medium font-bold text-primary"
                 >
                     Hey, Shadow! 👋
                 </h1>
@@ -14,13 +14,13 @@
         </template>
 
         <template #body>
-            <div class="flex flex-col justify-between flex-grow">
+            <div class="flex flex-grow flex-col justify-between">
                 <div>
-                    <h2 class="text-overline text-placeholder py-x3 uppercase">
+                    <h2 class="py-x3 text-overline uppercase text-placeholder">
                         your spaces
                     </h2>
 
-                    <div class="gap-x6 mt-x3 flex flex-col">
+                    <div class="mt-x3 flex flex-col gap-x6">
                         <SpaceCard
                             type="local"
                             :created-at="new Date()"
@@ -48,7 +48,7 @@
                             variant="rounded"
                             @click="openCreateSpaceModal"
                         >
-                            <PlusIcon class="w-8 h-auto text-white" />
+                            <PlusIcon class="h-auto w-8 text-white" />
                         </AppButton>
 
                         <label
@@ -64,6 +64,7 @@
             <CreateSpaceDialog
                 :open="state === 'create'"
                 @close="closeCreateSpaceModal"
+                @create="createSpace"
             />
         </template>
     </BaseLayout>
@@ -76,6 +77,7 @@ import SpaceCard from "#src/components/SpaceCard.vue";
 import PlusIcon from "#src/icons/PlusIcon.vue";
 import BaseLayout from "#src/layouts/BaseLayout.vue";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 type State = "listing" | "create";
 
@@ -87,6 +89,13 @@ function openCreateSpaceModal() {
 
 function closeCreateSpaceModal() {
     state.value = "listing";
+}
+
+const router = useRouter();
+
+function createSpace(name: string) {
+    console.log("space: ", name);
+    router.push({ name: "space", params: { name: name } });
 }
 </script>
 

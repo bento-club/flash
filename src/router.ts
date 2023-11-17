@@ -20,6 +20,7 @@ const routes: RouteRecordRaw[] = [
             },
             {
                 path: ":name",
+                name: "space",
                 component: SpacePage,
             },
         ],
