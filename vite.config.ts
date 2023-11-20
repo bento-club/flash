@@ -13,7 +13,7 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            ...getPathAliases("./tsconfig.json"),
+            ...getPathAliases("./tsconfig.app.json"),
             //? See https://github.com/webtorrent/webtorrent/issues/2600#issuecomment-1659883605
             webtorrent: fileURLToPath(
                 new URL(

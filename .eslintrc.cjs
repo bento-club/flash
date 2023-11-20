@@ -1,13 +1,20 @@
 /* eslint-env node */
 
+require("@rushstack/eslint-patch/modern-module-resolution");
+
 module.exports = {
-    parser: "vue-eslint-parser",
-    parserOptions: {
-        parser: "@typescript-eslint/parser",
-    },
-    extends: ["eslint:recommended", "plugin:vue/vue3-recommended", "prettier"],
+    root: true,
+    extends: [
+        "plugin:vue/vue3-recommended",
+        "eslint:recommended",
+        "@vue/eslint-config-typescript",
+        "@vue/eslint-config-prettier/skip-formatting",
+    ],
     rules: {
         "vue/require-default-prop": "off",
         "vue/multi-word-component-names": "off",
+    },
+    parserOptions: {
+        ecmaVersion: "latest",
     },
 };

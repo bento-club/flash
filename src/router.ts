@@ -1,4 +1,8 @@
-import { RouteRecordRaw, createRouter, createWebHistory } from "vue-router";
+import {
+    type RouteRecordRaw,
+    createRouter,
+    createWebHistory,
+} from "vue-router";
 
 const ChooseNamePage = () => import("#src/pages/ChooseNamePage.vue");
 const ListSpacesPage = () => import("#src/pages/ListSpacesPage.vue");
