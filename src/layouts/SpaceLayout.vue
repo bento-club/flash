@@ -1,11 +1,13 @@
 <template>
-    <article class="h-screen-d bg-surface-primary px-x4 pt-x4 text-primary">
-        <header class="relative flex items-center justify-center py-x4">
-            <button class="absolute left-0 top-x4" @click="onBackBtnClick">
-                <ArrowLeft class="h-6 w-auto" />
+    <article
+        class="h-screen-d bg-surface-primary px-x4 pt-x4 text-primary w-screen overflow-x-hidden"
+    >
+        <header class="py-x4 relative flex items-center justify-center">
+            <button class="top-x4 absolute left-0" @click="onBackBtnClick">
+                <ArrowLeft class="w-auto h-6" />
             </button>
             <div class="flex items-center">
-                <SpaceIcon class="h-6 w-auto text-surface-brand" />
+                <SpaceIcon class="text-surface-brand w-auto h-6" />
                 <h1 class="ml-x2 font-space-grotesk font-bold capitalize">
                     Design Space
                 </h1>

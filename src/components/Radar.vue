@@ -3,17 +3,17 @@
         <img
             :src="radarBg"
             alt="Radar background"
-            class="relative z-0 h-auto w-full"
+            class="relative z-0 w-full h-auto"
         />
 
         <img
             :src="scannerImg"
             alt="Scanner image"
-            class="scanner absolute left-0 top-0 h-auto w-full"
+            class="scanner absolute top-0 left-0 w-full h-auto"
         />
 
         <svg
-            class="absolute left-0 top-0 z-10 h-auto w-full"
+            class="absolute top-0 left-0 z-10 w-full h-auto"
             viewBox="0 0 1260 1260"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -493,7 +493,7 @@ import scannerImg from "#src/assets/radar-scanner.png";
 
 <style scoped lang="scss">
 .scanner {
-    animation: scanning 3s linear infinite;
+    animation: scanning 10s linear infinite;
 }
 
 @keyframes scanning {
