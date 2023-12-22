@@ -14,6 +14,8 @@
         "clean": "rm -rf dist docs"
     },
     "dependencies": {
+        "@dicebear/collection": "7.0.1",
+        "@dicebear/core": "7.0.1",
         "@fontsource/lexend": "5.0.17",
         "@fontsource/space-grotesk": "5.0.15",
         "@vitejs/plugin-basic-ssl": "1.0.1",
