@@ -51,8 +51,13 @@ export default {
                 primary: {
                     700: "#5925DC",
                 },
+                border: {
+                    primary: "#334155",
+                },
             },
             spacing: {
+                ...getSpacingUnitsUpto(500),
+                x1: "0.25rem",
                 x2: "0.5rem",
                 x3: "0.75rem",
                 x4: "1rem",
@@ -70,3 +75,18 @@ export default {
         },
     },
 };
+
+/**
+ * Get spacing configuration upto a limit
+ *
+ * @param {number} limit Upper limit for spacing configuration
+ */
+function getSpacingUnitsUpto(limit) {
+    const spacing = {};
+
+    for (let i = 1; i <= limit; i += 0.5) {
+        spacing[`${i}`] = `${i / 4}rem`;
+    }
+
+    return spacing;
+}
