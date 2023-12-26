@@ -14,9 +14,13 @@
                 <ButtonGroup :options="options" class="mb-x3 mt-x6" />
             </div>
 
-            <AppButton label="add file" variant="rounded">
-                <PlusIcon class="h-8 w-auto" />
-            </AppButton>
+            <div class="flex justify-center">
+                <FilePicker @select="console.log($event)">
+                    <AppButton label="add file" variant="rounded">
+                        <PlusIcon class="h-8 w-auto" />
+                    </AppButton>
+                </FilePicker>
+            </div>
         </div>
     </SpaceLayout>
 </template>
@@ -26,6 +30,7 @@ import AppButton from "#src/components/AppButton.vue";
 import ButtonGroup, {
     type ButtonGroupOption,
 } from "#src/components/ButtonGroup.vue";
+import FilePicker from "#src/components/FilePicker.vue";
 import Radar from "#src/components/Radar.vue";
 import PlusIcon from "#src/icons/PlusIcon.vue";
 import QRCodeIcon from "#src/icons/QRCodeIcon.vue";
