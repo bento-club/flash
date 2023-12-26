@@ -1,8 +1,13 @@
 <template>
     <SpaceLayout>
-        <Radar class="w-full" />
+        <section>
+            <Radar class="w-full" />
+            <p class="mt-x3 text-center text-paragraph-small text-secondary">
+                Waiting for devices to join your space
+            </p>
+        </section>
 
-        <ButtonGroup :options="options" class="my-x3" />
+        <ButtonGroup :options="options" class="mb-x3 mt-x6" />
     </SpaceLayout>
 </template>
 
