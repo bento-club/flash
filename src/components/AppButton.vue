@@ -1,17 +1,29 @@
 <template>
-    <button
-        :type="type"
-        class="bg-[#7A5AF8] p-4 font-space-grotesk font-medium capitalize text-white hover:bg-[#633CFF] active:bg-[#5024FF]"
-        :class="[
-            {
-                'w-full': fullWidth,
-            },
-            [variant === 'rounded' ? 'rounded-full' : 'rounded-lg'],
-        ]"
-        @click="emit('click')"
+    <div
+        class="inline-flex flex-col items-center justify-center"
+        :class="{
+            'w-full': fullWidth,
+        }"
     >
-        <slot></slot>
-    </button>
+        <button
+            :type="type"
+            class="bg-surface-brand p-4 font-space-grotesk font-medium capitalize text-white hover:bg-[#633CFF] active:bg-[#5024FF]"
+            :class="[
+                [variant === 'rounded' ? 'rounded-full' : 'rounded-lg'],
+                { 'w-full': fullWidth },
+            ]"
+            @click="emit('click')"
+        >
+            <slot></slot>
+        </button>
+
+        <p
+            v-if="label"
+            class="mt-x2 text-paragraph-x-small capitalize text-primary"
+        >
+            {{ label }}
+        </p>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -30,6 +42,11 @@ export interface AppButtonProps {
      * Variant of button
      */
     variant?: "rounded" | "normal";
+
+    /**
+     * Label for the button
+     */
+    label?: string;
 }
 
 export type AppButtonEvents = {

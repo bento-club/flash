@@ -46,17 +46,11 @@
                         <AppButton
                             id="create-space-btn"
                             variant="rounded"
+                            label="create space"
                             @click="openCreateSpaceModal"
                         >
                             <PlusIcon class="h-auto w-8 text-white" />
                         </AppButton>
-
-                        <label
-                            for="create-space-btn"
-                            class="mt-2 text-xs capitalize text-[#CBD5E1]"
-                        >
-                            create space
-                        </label>
                     </div>
                 </div>
             </div>
