@@ -88,7 +88,6 @@ function closeCreateSpaceModal() {
 const router = useRouter();
 
 function createSpace(name: string) {
-    console.log("space: ", name);
     router.push({ name: "space", params: { name: name } });
 }
 </script>

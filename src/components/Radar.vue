@@ -432,7 +432,7 @@
                 top: coord.y,
             }"
             class="absolute -translate-x-1/2 -translate-y-1/2"
-            :name="useId()"
+            :name="coord.id"
         />
     </div>
 </template>
@@ -455,6 +455,11 @@ interface AvatarCoord {
      * y coord as `npx`
      */
     y: string;
+
+    /**
+     * Id for the coord
+     */
+    id: string;
 }
 
 const coords = ref<AvatarCoord[]>([]);
@@ -471,10 +476,12 @@ function getAllAvatarCoords(el: HTMLElement) {
     for (const point of points.values()) {
         const { x, y } = point.getBoundingClientRect();
 
-        coords.push({ x: `${Math.round(x)}px`, y: `${Math.round(y)}px` });
+        coords.push({
+            x: `${Math.round(x)}px`,
+            y: `${Math.round(y)}px`,
+            id: useId(),
+        });
     }
-
-    console.log("coordinates: ", coords);
 
     // return coords;
 

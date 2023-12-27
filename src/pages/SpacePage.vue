@@ -15,7 +15,7 @@
             </div>
 
             <div class="flex justify-center">
-                <FilePicker @select="console.log($event)">
+                <FilePicker>
                     <AppButton label="add file" variant="rounded">
                         <PlusIcon class="h-8 w-auto" />
                     </AppButton>
