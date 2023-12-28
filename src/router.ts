@@ -7,6 +7,7 @@ import {
 const ChooseNamePage = () => import("#src/pages/ChooseNamePage.vue");
 const ListSpacesPage = () => import("#src/pages/ListSpacesPage.vue");
 const SpacePage = () => import("#src/pages/SpacePage.vue");
+const FileTransferPage = () => import("#src/pages/FileTransferPage.vue");
 
 const routes: RouteRecordRaw[] = [
     { name: "home", path: "/", redirect: { name: "chooseName" } },
@@ -23,9 +24,20 @@ const routes: RouteRecordRaw[] = [
                 component: ListSpacesPage,
             },
             {
-                path: ":name",
-                name: "space",
-                component: SpacePage,
+                path: "",
+                redirect: "space",
+                children: [
+                    {
+                        path: ":name",
+                        name: "space",
+                        component: SpacePage,
+                    },
+                    {
+                        path: ":name/transfers",
+                        name: "transfers",
+                        component: FileTransferPage,
+                    },
+                ],
             },
         ],
     },

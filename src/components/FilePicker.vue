@@ -6,6 +6,8 @@
             class="sr-only"
             type="file"
             :name="name"
+            :value="modelValue"
+            multiple
             @input="onSelectFile"
         />
     </label>
@@ -15,11 +17,24 @@
 import { ref } from "vue";
 
 export interface FilePickerProps {
+    /**
+     * Name of the input element
+     */
     name?: string;
+
+    /**
+     * Model value of the file input
+     */
+    modelValue?: FileList | null;
+
+    /**
+     * Allow selecting multiple files
+     */
+    multiple?: boolean;
 }
 
 export type FilePickerEvents = {
-    select: [files: FileList];
+    "update:modelValue": [files: FileList];
 };
 
 withDefaults(defineProps<FilePickerProps>(), {
@@ -37,7 +52,7 @@ function onSelectFile(event: Event) {
         return;
     }
 
-    emit("select", target.files);
+    emit("update:modelValue", target.files);
 }
 </script>
 
