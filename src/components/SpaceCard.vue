@@ -1,39 +1,41 @@
 <template>
     <button
-        class="rounded-medium p-x4 w-full text-left border"
+        class="w-full rounded-medium border p-x4 text-left"
         :class="[
             state === 'active'
-                ? 'shadow-brand-focus-ring border-brand'
+                ? 'border-brand shadow-brand-focus-ring'
                 : 'border-primary',
         ]"
     >
-        <header class="font-space-grotesk flex items-center justify-between">
+        <header class="flex items-center justify-between font-space-grotesk">
             <section class="flex items-center">
                 <component
                     :is="icon[type]"
-                    class="w-auto h-6"
+                    class="h-6 w-auto"
                     :class="[
                         state === 'active'
                             ? 'text-surface-brand'
                             : 'text-surface-tertiary',
                     ]"
                 />
-                <h3 class="ml-x2 text-primary font-bold capitalize">{{ name }}</h3>
+                <h3 class="ml-x2 font-bold capitalize text-primary">
+                    {{ name }}
+                </h3>
             </section>
 
             <section
-                class="text-paragraph-x-small flex items-center justify-center w-6 h-6 font-bold border rounded-full"
+                class="flex h-6 w-6 items-center justify-center rounded-full border text-paragraph-x-small font-bold"
                 :class="[
                     state === 'active'
-                        ? 'border-brand text-brand-purple bg-opacity-35 bg-surface-brand'
-                        : 'text-placeholder bg-surface-secondary border-primary',
+                        ? 'border-brand bg-surface-brand bg-opacity-35 text-brand-purple'
+                        : 'border-primary bg-surface-secondary text-placeholder',
                 ]"
             >
                 {{ count }}
             </section>
         </header>
 
-        <p class="text-paragraph-x-small mt-x2 text-secondary">
+        <p class="mt-x2 text-paragraph-x-small text-secondary">
             Space created on {{ formattedDate }}
         </p>
     </button>

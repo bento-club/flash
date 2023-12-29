@@ -4,7 +4,7 @@
             <DialogOverlay class="overlay" />
             <DialogContent
                 as="article"
-                class="content rounded-medium bg-surface-primary text-primary py-x3 border-primary border"
+                class="content rounded-medium border border-primary bg-surface-primary py-x3 text-primary"
             >
                 <header class="px-x4 py-x3">
                     <div class="flex items-center justify-between">
@@ -12,18 +12,18 @@
                             <component
                                 :is="icon"
                                 v-if="icon"
-                                class="text-surface-brand h-6 w-auto"
+                                class="h-6 w-auto text-surface-brand"
                             ></component>
 
                             <DialogTitle
-                                class="text-heading-small font-space-grotesk ml-2 font-bold capitalize"
+                                class="ml-2 font-space-grotesk text-heading-small font-bold capitalize"
                             >
                                 {{ title }}
                             </DialogTitle>
                         </div>
 
                         <DialogClose class="flex items-center" type="button">
-                            <XIcon class="text-surface-tertiary h-6 w-auto" />
+                            <XIcon class="h-6 w-auto text-surface-tertiary" />
                         </DialogClose>
                     </div>
 

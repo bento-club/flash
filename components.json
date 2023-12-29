@@ -1,15 +1,15 @@
 {
-  "style": "default",
-  "typescript": true,
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "src/assets/index.scss",
-    "baseColor": "slate",
-    "cssVariables": true
-  },
-  "framework": "vite",
-  "aliases": {
-    "components": "src/components",
-    "utils": "src/lib/utils"
-  }
+    "style": "default",
+    "typescript": true,
+    "tailwind": {
+        "config": "tailwind.config.js",
+        "css": "src/assets/index.scss",
+        "baseColor": "slate",
+        "cssVariables": true
+    },
+    "framework": "vite",
+    "aliases": {
+        "components": "src/components",
+        "utils": "src/lib/utils"
+    }
 }

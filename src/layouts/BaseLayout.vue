@@ -1,13 +1,13 @@
 <template>
     <article class="h-screen-d bg-[#0F172A]">
-        <div class="px-x4 py-x3 flex flex-col h-full max-w-3xl mx-auto">
+        <div class="mx-auto flex h-full max-w-3xl flex-col px-x4 py-x3">
             <header>
                 <slot name="header"></slot>
             </header>
 
             <AppDivider class="my-3" />
 
-            <main class="flex flex-col flex-grow">
+            <main class="flex flex-grow flex-col">
                 <slot name="body"></slot>
             </main>
 

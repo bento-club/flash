@@ -1,6 +1,6 @@
 <template>
     <div
-        class="copy-link text-xs cursor-pointer border border-neutral-300 rounded-md px-3 py-2.5 truncate"
+        class="copy-link cursor-pointer truncate rounded-md border border-neutral-300 px-3 py-2.5 text-xs"
         @click="copyLink()"
     >
         {{ link }}

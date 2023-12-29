@@ -1,13 +1,13 @@
 <template>
     <article
-        class="h-screen-d bg-surface-primary pt-x4 text-primary flex flex-col w-screen overflow-x-hidden"
+        class="flex h-screen-d w-screen flex-col overflow-x-hidden bg-surface-primary pt-x4 text-primary"
     >
-        <header class="px-x4 py-x4 relative flex items-center justify-between">
+        <header class="relative flex items-center justify-between px-x4 py-x4">
             <button @click="onBackBtnClick">
-                <ArrowLeft class="w-auto h-6" />
+                <ArrowLeft class="h-6 w-auto" />
             </button>
-            <div class="flex items-center mx-auto">
-                <SpaceIcon class="text-surface-brand w-auto h-6" />
+            <div class="mx-auto flex items-center">
+                <SpaceIcon class="h-6 w-auto text-surface-brand" />
                 <h1 class="ml-x2 font-space-grotesk font-bold capitalize">
                     Design Space
                 </h1>
@@ -16,7 +16,7 @@
 
         <AppDivider class="my-x2" />
 
-        <section class="pb-x3 flex-grow">
+        <section class="flex-grow pb-x3">
             <slot></slot>
         </section>
     </article>
