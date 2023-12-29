@@ -1,10 +1,10 @@
 <template>
-    <article class="flex items-center justify-between gap-x4 px-x4 py-x2">
+    <article class="gap-x4 px-x4 py-x2 flex items-center justify-between">
         <div class="flex-grow">
-            <div class="flex items-center gap-x2">
+            <div class="gap-x2 flex items-center">
                 <component
                     :is="icon"
-                    class="h-x4 w-auto text-surface-brand"
+                    class="h-x4 text-surface-brand w-auto"
                 ></component>
 
                 <div class="text-paragraph-small text-primary">
@@ -13,16 +13,17 @@
             </div>
 
             <ProgressRoot
+                v-if="state === 'transferring'"
                 :model-value="clampedProgress"
-                class="progress translate- mt-x2 h-x1 w-8/12 overflow-hidden rounded-full bg-surface-tertiary"
+                class="progress translate- mt-x2 h-x1 bg-surface-tertiary w-8/12 overflow-hidden rounded-full"
             >
                 <ProgressIndicator
-                    class="indicator h-full w-full rounded-full bg-surface-brand"
+                    class="indicator bg-surface-brand w-full h-full rounded-full"
                     :style="`transform: translateX(-${100 - clampedProgress}%)`"
                 />
             </ProgressRoot>
 
-            <div class="mt-x2 text-paragraph-x-small uppercase text-secondary">
+            <div class="mt-x2 text-paragraph-x-small text-secondary uppercase">
                 {{ filesizeString(file.size, "b") }}
             </div>
         </div>
@@ -37,7 +38,7 @@
             <PauseIcon v-if="state === 'transferring'" class="h-x6 w-auto" />
             <CheckIcon
                 v-if="state === 'done'"
-                class="h-x6 w-auto text-surface-brand"
+                class="h-x6 text-surface-brand w-auto"
             />
         </button>
     </article>
