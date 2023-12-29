@@ -16,6 +16,23 @@ export default {
             height: {
                 "screen-d": "100dvh",
             },
+            minHeight: ({ theme }) => ({
+                ...theme("height"),
+                ...theme("spacing"),
+            }),
+            maxHeight: ({ theme }) => ({
+                ...theme("height"),
+                ...theme("spacing"),
+            }),
+            maxWidth: ({ theme }) => ({
+                360: "90rem",
+                ...theme("spacing"),
+                ...theme("width"),
+            }),
+            minWidth: ({ theme }) => ({
+                ...theme("width"),
+                ...theme("spacing"),
+            }),
             fontSize: {
                 "heading-small": ["1.125rem", { lineHeight: "1.6875rem" }],
                 "heading-medium": [
