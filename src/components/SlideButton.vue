@@ -3,7 +3,7 @@
         :model-value="sliderValue"
         :max="100"
         :min="1"
-        class="slide-to-action min-w-75 h-14 bg-surface-brand p-x1 text-primary relative inline-flex items-center justify-center rounded-full"
+        class="slide-to-action h-14 min-w-75 bg-surface-brand p-x1 text-primary relative inline-flex items-center justify-center rounded-full"
         @update:model-value="handleSliding"
     >
         <SliderThumb
@@ -125,7 +125,7 @@ syncSliderValue();
 <style lang="scss" scoped>
 .slide-to-action {
     .transition-thumb {
-        transition: left 100ms linear;
+        transition: left 1200ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 }
 </style>
