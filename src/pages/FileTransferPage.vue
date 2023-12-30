@@ -2,11 +2,11 @@
     <SpaceLayout>
         <section v-if="selectedFiles?.length">
             <h2
-                class="px-x4 py-x3 text-overline text-secondary flex items-center justify-between"
+                class="flex items-center justify-between px-x4 py-x3 text-overline text-secondary"
             >
                 <div class="uppercase">added files</div>
                 <div
-                    class="border-primary flex items-center justify-center w-6 h-6 border rounded-full"
+                    class="flex h-6 w-6 items-center justify-center rounded-full border border-primary"
                 >
                     {{ selectedFiles?.length }}
                 </div>
@@ -24,7 +24,7 @@
             <AppButton> Pick file </AppButton>
         </FilePicker>
 
-        <div class="mt-9 px-x4">
+        <div class="fixed bottom-0 left-0 w-full px-x4 py-x3">
             <SwipeButton label="Slide to Send File" class="w-full" />
         </div>
     </SpaceLayout>

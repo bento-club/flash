@@ -1,20 +1,22 @@
 <template>
     <article
-        class="flex h-screen-d w-screen flex-col overflow-x-hidden bg-surface-primary pt-x4 text-primary"
+        class="flex h-screen-d w-screen flex-col overflow-x-hidden bg-surface-primary text-primary"
     >
-        <header class="relative flex items-center justify-between px-x4 py-x4">
-            <button @click="onBackBtnClick">
-                <ArrowLeft class="h-6 w-auto" />
-            </button>
-            <div class="mx-auto flex items-center">
-                <SpaceIcon class="h-6 w-auto text-surface-brand" />
-                <h1 class="ml-x2 font-space-grotesk font-bold capitalize">
-                    Design Space
-                </h1>
-            </div>
-        </header>
+        <div class="sticky top-0 bg-surface-primary">
+            <header class="flex items-center justify-between p-x4">
+                <button @click="onBackBtnClick">
+                    <ArrowLeft class="h-6 w-auto" />
+                </button>
+                <div class="mx-auto flex items-center">
+                    <SpaceIcon class="h-6 w-auto text-surface-brand" />
+                    <h1 class="ml-x2 font-space-grotesk font-bold capitalize">
+                        Design Space
+                    </h1>
+                </div>
+            </header>
 
-        <AppDivider class="my-x2" />
+            <AppDivider class="my-x2" />
+        </div>
 
         <section class="flex-grow pb-x3">
             <slot></slot>

@@ -1,12 +1,12 @@
 <template>
     <SpaceLayout>
-        <div class="flex flex-col justify-between h-full">
+        <div class="flex h-full flex-col justify-between">
             <div class="flex-grow">
                 <Radar class="w-full" />
 
                 <div class="px-x4">
                     <p
-                        class="mt-x3 text-paragraph-small text-secondary text-center"
+                        class="mt-x3 text-center text-paragraph-small text-secondary"
                     >
                         Waiting for devices to join your space
                     </p>
@@ -18,7 +18,7 @@
             <div class="flex justify-center">
                 <FilePicker @update:model-value="onAddFile">
                     <AppButton label="add file" variant="rounded">
-                        <PlusIcon class="w-auto h-8" />
+                        <PlusIcon class="h-8 w-auto" />
                     </AppButton>
                 </FilePicker>
             </div>
