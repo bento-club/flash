@@ -1,23 +1,24 @@
 <template>
     <SpaceLayout>
-        <div class="flex h-full flex-col justify-between">
+        <div class="flex flex-col justify-between h-full">
             <div class="flex-grow">
-                <section>
-                    <Radar class="w-full" />
+                <Radar class="w-full" />
+
+                <div class="px-x4">
                     <p
-                        class="mt-x3 text-center text-paragraph-small text-secondary"
+                        class="mt-x3 text-paragraph-small text-secondary text-center"
                     >
                         Waiting for devices to join your space
                     </p>
-                </section>
 
-                <ButtonGroup :options="options" class="mb-x3 mt-x6" />
+                    <ButtonGroup :options="options" class="mb-x3 mt-x6" />
+                </div>
             </div>
 
             <div class="flex justify-center">
                 <FilePicker>
                     <AppButton label="add file" variant="rounded">
-                        <PlusIcon class="h-8 w-auto" />
+                        <PlusIcon class="w-auto h-8" />
                     </AppButton>
                 </FilePicker>
             </div>
