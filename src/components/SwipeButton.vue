@@ -3,12 +3,12 @@
         :model-value="sliderValue"
         :max="100"
         :min="1"
-        class="slide-to-action h-14 min-w-75 bg-surface-brand p-x1 text-primary relative inline-flex items-center justify-center rounded-full"
+        class="slide-to-action relative inline-flex h-14 min-w-75 items-center justify-center rounded-full bg-surface-brand p-x1 text-primary"
         @update:model-value="handleSliding"
     >
         <SliderThumb
             :id="id"
-            class="thumb overflow-clip bg-surface-brand focus:outline-none inline-block w-12 h-12 rounded-full"
+            class="thumb inline-block h-12 w-12 overflow-clip rounded-full bg-surface-brand focus:outline-none"
             :class="{
                 'transition-thumb': isTransitionsEnabled && !isThumbActive,
             }"
@@ -16,7 +16,7 @@
             @pointerdown="handleThumbPointerDown"
             @pointerup="handleThumbPointerUp"
         >
-            <SubtractIcon class="w-auto h-full text-white" />
+            <SubtractIcon class="h-full w-auto text-white" />
         </SliderThumb>
 
         <label v-if="label" :for="id">
@@ -31,10 +31,10 @@ import { SliderRoot, SliderThumb, useId } from "radix-vue";
 import SubtractIcon from "#src/icons/SubtractIcon.vue";
 import { clamp } from "lodash";
 
-export interface SlideButtonProps {
+export interface SwipeButtonProps {
     id?: string;
     label?: string;
-    modelValue: boolean;
+    modelValue?: boolean;
     textTransform?:
         | "capitalize"
         | "uppercase"
@@ -44,15 +44,36 @@ export interface SlideButtonProps {
         | "full-size-kana";
 }
 
-export type SlideButtonEmits = {
+export type SwipeButtonEmits = {
+    /**
+     * Emit the model value as `true` or `false`
+     */
     "update:modelValue": [value: boolean];
+
+    /**
+     * Emitted when starting the swipe
+     */
+    start: [value: number];
+
+    /**
+     * Emitted when the user has stopped
+     * the swiping. This is emitted even
+     * when swiping is not complete
+     */
+    end: [value: number];
+
+    /**
+     * Emitted when the user has
+     * fully swiped the button
+     */
+    swipe: [value: number];
 };
 
-const props = withDefaults(defineProps<SlideButtonProps>(), {
+const props = withDefaults(defineProps<SwipeButtonProps>(), {
     id: () => useId(),
     textTransform: "none",
 });
-const emit = defineEmits<SlideButtonEmits>();
+const emit = defineEmits<SwipeButtonEmits>();
 
 onMounted(() => {
     setTimeout(() => {
@@ -62,8 +83,8 @@ onMounted(() => {
 
 const isTransitionsEnabled = ref(false);
 
-const MIN_SLIDE_VALUE = 3;
-const MAX_SLIDE_VALUE = 98;
+const MIN_SLIDE_VALUE = 2;
+const MAX_SLIDE_VALUE = 99;
 const COMPLETE_MIN_SLIDE_VALUE = Math.round(0.6 * MAX_SLIDE_VALUE);
 
 const sliderValue = ref([MIN_SLIDE_VALUE]);
@@ -96,7 +117,7 @@ function handleSliding(payload: number[] | undefined) {
     sliderValue.value = payload;
 }
 
-function watchAndStickSlider() {
+function watchThumbClick() {
     watch(isThumbActive, () => {
         if (sliderValue.value[0] < COMPLETE_MIN_SLIDE_VALUE) {
             sliderValue.value = [MIN_SLIDE_VALUE];
@@ -105,9 +126,31 @@ function watchAndStickSlider() {
             sliderValue.value = [MAX_SLIDE_VALUE];
             emit("update:modelValue", true);
         }
+
+        if (isThumbActive.value) {
+            emit("start", normaliseValue(sliderValue.value[0]));
+        } else {
+            emit("end", normaliseValue(sliderValue.value[0]));
+        }
+
+        if (sliderValue.value[0] === MAX_SLIDE_VALUE) {
+            emit("swipe", normaliseValue(sliderValue.value[0]));
+        }
     });
 }
-watchAndStickSlider();
+watchThumbClick();
+
+function normaliseValue(value: number) {
+    if (value <= MIN_SLIDE_VALUE) {
+        return 0;
+    }
+
+    if (value >= MAX_SLIDE_VALUE) {
+        return 100;
+    }
+
+    return value;
+}
 
 function syncSliderValue() {
     watch([() => props.modelValue], () => {
