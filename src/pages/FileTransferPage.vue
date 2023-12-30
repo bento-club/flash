@@ -57,7 +57,7 @@ const isTransferComplete = ref(false);
 function onSwipe() {
     setTimeout(() => {
         isTransferComplete.value = true;
-    }, 500);
+    }, 1000);
 }
 </script>
 
