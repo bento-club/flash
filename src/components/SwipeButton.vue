@@ -13,10 +13,11 @@
                 'transition-thumb': isTransitionsEnabled && !isThumbActive,
             }"
             aria-label="Volume"
+            as-child
             @pointerdown="handleThumbPointerDown"
             @pointerup="handleThumbPointerUp"
         >
-            <SubtractIcon class="h-full w-auto text-white" />
+            <SubtractIcon class="text-white" />
         </SliderThumb>
 
         <label v-if="label" :for="id">
