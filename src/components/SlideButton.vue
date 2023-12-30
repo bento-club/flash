@@ -19,7 +19,7 @@
             <SubtractIcon class="w-auto h-full text-white" />
         </SliderThumb>
 
-        <label :for="id">
+        <label v-if="label" :for="id">
             {{ label }}
         </label>
     </SliderRoot>
@@ -50,7 +50,6 @@ export type SlideButtonEmits = {
 
 const props = withDefaults(defineProps<SlideButtonProps>(), {
     id: () => useId(),
-    label: () => `slide button ${useId()}`,
     textTransform: "none",
 });
 const emit = defineEmits<SlideButtonEmits>();

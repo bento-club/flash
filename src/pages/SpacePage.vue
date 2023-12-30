@@ -16,7 +16,7 @@
             </div>
 
             <div class="flex justify-center">
-                <FilePicker>
+                <FilePicker @update:model-value="onAddFile">
                     <AppButton label="add file" variant="rounded">
                         <PlusIcon class="w-auto h-8" />
                     </AppButton>
@@ -37,6 +37,7 @@ import PlusIcon from "#src/icons/PlusIcon.vue";
 import QRCodeIcon from "#src/icons/QRCodeIcon.vue";
 import ShareIcon from "#src/icons/ShareIcon.vue";
 import SpaceLayout from "#src/layouts/SpaceLayout.vue";
+import { useRouter } from "vue-router";
 
 const options: ButtonGroupOption[] = [
     {
@@ -50,6 +51,17 @@ const options: ButtonGroupOption[] = [
         value: "qrCode",
     },
 ];
+
+const router = useRouter();
+
+async function onAddFile() {
+    const spaceName = router.currentRoute.value.params.name;
+    if (!spaceName) {
+        return;
+    }
+
+    await router.push({ name: "transfers", params: { name: spaceName } });
+}
 </script>
 
 <style scoped></style>
