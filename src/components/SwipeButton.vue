@@ -42,6 +42,7 @@ export interface SwipeButtonProps {
         | "lowercase"
         | "full-width"
         | "full-size-kana";
+    reversible?: boolean;
 }
 
 export type SwipeButtonEmits = {
@@ -72,6 +73,7 @@ export type SwipeButtonEmits = {
 const props = withDefaults(defineProps<SwipeButtonProps>(), {
     id: () => useId(),
     textTransform: "none",
+    reversible: true,
 });
 const emit = defineEmits<SwipeButtonEmits>();
 
@@ -108,7 +110,7 @@ function handleSliding(payload: number[] | undefined) {
         return;
     }
 
-    if (sliderValue.value[0] === MAX_SLIDE_VALUE) {
+    if (sliderValue.value[0] === MAX_SLIDE_VALUE && !props.reversible) {
         return;
     }
 
@@ -133,7 +135,7 @@ function watchThumbClick() {
             emit("end", normaliseValue(sliderValue.value[0]));
         }
 
-        if (sliderValue.value[0] === MAX_SLIDE_VALUE) {
+        if (sliderValue.value[0] === MAX_SLIDE_VALUE && !isThumbActive.value) {
             emit("swipe", normaliseValue(sliderValue.value[0]));
         }
     });

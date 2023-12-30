@@ -12,11 +12,11 @@
                             <component
                                 :is="icon"
                                 v-if="icon"
-                                class="h-6 w-auto text-surface-brand"
+                                class="mr-2 h-6 w-auto text-surface-brand"
                             ></component>
 
                             <DialogTitle
-                                class="ml-2 font-space-grotesk text-heading-small font-bold capitalize"
+                                class="font-space-grotesk text-heading-small font-bold capitalize"
                             >
                                 {{ title }}
                             </DialogTitle>
@@ -34,7 +34,7 @@
                     </DialogDescription>
                 </header>
 
-                <section>
+                <section :class="$attrs.class">
                     <slot></slot>
                 </section>
             </DialogContent>

@@ -1,13 +1,13 @@
 <template>
     <article class="flex items-center justify-between gap-x4 px-x4 py-x2">
-        <div class="flex-grow">
+        <div class="max-w-10/12">
             <div class="flex items-center gap-x2">
                 <component
                     :is="icon"
                     class="h-x4 w-auto text-surface-brand"
                 ></component>
 
-                <div class="text-paragraph-small text-primary">
+                <div class="truncate text-paragraph-small text-primary">
                     {{ file.name }}
                 </div>
             </div>
@@ -15,7 +15,7 @@
             <ProgressRoot
                 v-if="state === 'transferring'"
                 :model-value="clampedProgress"
-                class="progress translate- mt-x2 h-x1 w-8/12 overflow-hidden rounded-full bg-surface-tertiary"
+                class="progress translate- mt-x2 h-x1 overflow-hidden rounded-full bg-surface-tertiary"
             >
                 <ProgressIndicator
                     class="indicator h-full w-full rounded-full bg-surface-brand"
@@ -23,9 +23,9 @@
                 />
             </ProgressRoot>
 
-            <div class="mt-x2 text-paragraph-x-small uppercase text-secondary">
+            <span class="mt-x2 text-paragraph-x-small uppercase text-secondary">
                 {{ filesizeString(file.size, "b") }}
-            </div>
+            </span>
         </div>
 
         <button
