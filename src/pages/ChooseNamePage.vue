@@ -25,7 +25,7 @@
                 />
 
                 <RouterLink :to="{ name: 'listSpaces' }">
-                    <AppButton full-width>let's go</AppButton>
+                    <AppButton full-width glow>Create Nickname</AppButton>
                 </RouterLink>
             </div>
         </template>
