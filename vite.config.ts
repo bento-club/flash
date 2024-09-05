@@ -8,9 +8,6 @@ import basicSsl from "@vitejs/plugin-basic-ssl";
 export default defineConfig({
     plugins: [vue(), basicSsl()],
     base: "/file-transfer-app",
-    build: {
-        outDir: "docs",
-    },
     resolve: {
         alias: {
             ...getPathAliases("./tsconfig.app.json"),

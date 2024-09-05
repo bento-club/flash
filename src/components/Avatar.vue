@@ -10,25 +10,25 @@
 </template>
 
 <script setup lang="ts">
-import { bottts } from "@dicebear/collection";
-import { createAvatar } from "@dicebear/core";
-import { AvatarRoot, AvatarImage, AvatarFallback } from "radix-vue";
+import { bottts } from "@dicebear/collection"
+import { createAvatar } from "@dicebear/core"
+import { AvatarRoot, AvatarImage, AvatarFallback } from "radix-vue"
 
 export interface AvatarProps {
-    name: string;
+    name: string
 }
 
-const props = defineProps<AvatarProps>();
+const props = defineProps<AvatarProps>()
 
 //? Split into words and use only the first letters
 const fallback = props.name
     .split(" ")
     .map((el) => el.trim())
-    .reduce((str, el) => str + el[0], "");
+    .reduce((str, el) => str + el[0], "")
 
 const avatar = createAvatar(bottts, {
     seed: props.name,
-}).toDataUriSync();
+}).toDataUri()
 </script>
 
 <style scoped lang="scss"></style>

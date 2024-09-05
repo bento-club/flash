@@ -11,7 +11,7 @@
         "preview": "vite preview",
         "format": "prettier --write .",
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts",
-        "clean": "rm -rf dist docs"
+        "clean": "rm -rf dist docs build"
     },
     "dependencies": {
         "@dicebear/collection": "^9.2.1",
