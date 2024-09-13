@@ -14,7 +14,9 @@
         "watch:ts": "tsc -w",
         "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
         "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "db:migrate": "prisma migrate dev",
+        "db:generate": "prisma generate"
     },
     "keywords": [],
     "author": "",
@@ -22,6 +24,7 @@
     "dependencies": {
         "@fastify/autoload": "^5.0.0",
         "@fastify/sensible": "^5.0.0",
+        "@prisma/client": "^5.19.1",
         "dotenv": "^16.4.5",
         "fastify": "^4.26.1",
         "fastify-cli": "^6.3.0",
@@ -33,7 +36,8 @@
         "concurrently": "^8.2.2",
         "fastify-tsconfig": "^2.0.0",
         "prettier": "^3.3.3",
+        "prisma": "^5.19.1",
         "ts-node": "^10.4.0",
-        "typescript": "^5.2.2"
+        "typescript": "^5.6.2"
     }
 }

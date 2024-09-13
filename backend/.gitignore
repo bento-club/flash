@@ -66,3 +66,7 @@ dist
 
 # secrets
 .env
+
+# db
+*.db
+*.db-journal
