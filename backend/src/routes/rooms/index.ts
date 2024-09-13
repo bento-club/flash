@@ -1,14 +1,12 @@
-import { FastifyPluginAsync } from "fastify"
+import {
+    createRoomBodySchema,
+    CreateRoomRoute,
+    GetAllRoomsRoute,
+} from "#src/routes/rooms/constants.js"
+import { FastifyPluginAsyncZod } from "fastify-type-provider-zod"
+import roomsRepo from "#src/repo/rooms.js"
 
-export type GetAllRoomsParams = {
-    roomId: string
-}
-
-export type GetAllRoomsRoute = {
-    Params: GetAllRoomsParams
-}
-
-const Rooms: FastifyPluginAsync = async function (fastify): Promise<void> {
+const Rooms: FastifyPluginAsyncZod = async function (fastify): Promise<void> {
     fastify.get<GetAllRoomsRoute>("/:roomId", async function (req) {
         const { roomId } = req.params
 
@@ -16,9 +14,31 @@ const Rooms: FastifyPluginAsync = async function (fastify): Promise<void> {
             data: {
                 rooms: [roomId],
                 ip: req.ip,
+                name: "room name",
             },
         }
     })
+
+    fastify.post<CreateRoomRoute>(
+        "/",
+        {
+            schema: {
+                body: createRoomBodySchema,
+            },
+        },
+        async function (req) {
+            const { body } = req
+
+            const createdRoom = await roomsRepo.create({
+                ownerId: body.ownerId,
+                name: body.name,
+            })
+
+            return {
+                data: createdRoom,
+            }
+        }
+    )
 }
 
 export default Rooms

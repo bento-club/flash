@@ -1,4 +1,4 @@
-import db from "@/repo/db.js"
+import db from "#src/repo/db.js"
 import { PrismaClient } from "@prisma/client"
 
 class RoomsRepo {
@@ -13,7 +13,7 @@ class RoomsRepo {
             data: {
                 name: params.name,
                 ownerId: params.ownerId,
-            },
+            }
         })
     }
 }

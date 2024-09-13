@@ -3,6 +3,7 @@ import AutoLoad, { AutoloadPluginOptions } from "@fastify/autoload"
 import { FastifyPluginAsync } from "fastify"
 import { fileURLToPath } from "url"
 import "dotenv/config"
+import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -19,6 +20,8 @@ const app: FastifyPluginAsync<AppOptions> = async (
     opts
 ): Promise<void> => {
     // Place here your custom code!
+    fastify.setValidatorCompiler(validatorCompiler)
+    fastify.setSerializerCompiler(serializerCompiler)
 
     // Do not touch the following lines
 
