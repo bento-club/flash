@@ -10,11 +10,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique
+  name      String
+  token     String   @unique
+  lastActiveAt DateTime @default(now()) @map("last_active_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt() @map("updated_at")
+
+  @@map("users")
+}
+
 model Room {
-  id      Int    @id @default(autoincrement())
-  uuid    String @unique @default(uuid())
-  ownerId String @unique @map("owner_id")
-  name    String
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique @default(uuid())
+  ownerId   String   @unique @map("owner_id")
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt() @map("updated_at")
 
   @@map("rooms")
 }

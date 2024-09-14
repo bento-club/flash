@@ -14,7 +14,7 @@
         "clean": "rm -rf dist",
         "watch:ts": "tsc -w",
         "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
-        "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js",
+        "dev:start": "fastify start --ignore-watch='.ts$ prisma/dev.db' -w -l info -P dist/app.js",
         "format": "prettier --write .",
         "db:migrate": "prisma migrate dev",
         "db:generate": "prisma generate"
@@ -29,6 +29,7 @@
         "@fastify/autoload": "^5.0.0",
         "@fastify/sensible": "^5.0.0",
         "@prisma/client": "^5.19.1",
+        "bcrypt": "^5.1.1",
         "dotenv": "^16.4.5",
         "fastify": "^4.26.1",
         "fastify-cli": "^6.3.0",
@@ -37,6 +38,7 @@
         "zod": "^3.23.8"
     },
     "devDependencies": {
+        "@types/bcrypt": "^5.0.2",
         "@types/node": "^20.4.4",
         "c8": "^10.1.2",
         "concurrently": "^8.2.2",
