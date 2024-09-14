@@ -1,6 +1,7 @@
 {
     "extends": "fastify-tsconfig",
     "compilerOptions": {
+        "strict": true,
         "outDir": "dist",
         "sourceMap": true,
         "moduleResolution": "NodeNext",
