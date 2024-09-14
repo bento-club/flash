@@ -2,7 +2,6 @@ import * as path from "path"
 import AutoLoad, { AutoloadPluginOptions } from "@fastify/autoload"
 import { FastifyPluginAsync } from "fastify"
 import { fileURLToPath } from "url"
-import "dotenv/config"
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod"
 
 const __filename = fileURLToPath(import.meta.url)
