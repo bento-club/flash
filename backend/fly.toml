@@ -26,4 +26,3 @@ primary_region = 'ams'
 [env]
   FASTIFY_ADDRESS = '0.0.0.0'
   PORT = 3000
-  DATABASE_URL = 'file:/data/prod.db'
