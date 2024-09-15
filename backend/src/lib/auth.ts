@@ -20,7 +20,7 @@ export async function hash(plainText: string): Promise<string | Error> {
 /**
  * Compare a hashed and plain text to see if they match
  */
-export async function compare(
+export async function compareToken(
     plainText: string,
     hash: string
 ): Promise<boolean> {

@@ -7,6 +7,7 @@ export const identifyBodySchema = z.object({
     name: z
         .string()
         .max(MAX_NAME_LENGTH, `Maximum length allowed is ${MAX_NAME_LENGTH}`),
+    token: z.string().optional()
 })
 
 export type IdentifyBody = z.infer<typeof identifyBodySchema>

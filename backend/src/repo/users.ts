@@ -29,14 +29,18 @@ export class UsersRepo extends Repo {
                 return tokenHash
             }
 
-            return this.db.user.create({
+            const created = await this.db.user.create({
                 data: {
                     uuid: params.uuid,
                     name: params.name,
-                    token: tokenPlainText,
+                    token: tokenHash,
                     lastActiveAt: new Date(),
                 },
             })
+
+            created.token = tokenPlainText
+           
+            return created
         } catch (err) {
             return err as Error
         }

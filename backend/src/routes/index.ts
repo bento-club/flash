@@ -20,9 +20,7 @@ const root: FastifyPluginAsyncZod = async (fastify): Promise<void> => {
             const user = await authService.identify(body)
 
             if (user instanceof Error) {
-                return fastify.httpErrors.unprocessableEntity(
-                    "Creating user failed"
-                )
+                return fastify.httpErrors.unauthorized(user.message)
             }
 
             return user
