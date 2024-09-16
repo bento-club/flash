@@ -1,12 +1,6 @@
 import { z } from "zod"
 
-export type GetAllRoomsParams = {
-    roomId: string
-}
-
-export type GetAllRoomsRoute = {
-    Params: GetAllRoomsParams
-}
+export type GetAllRoomsRoute = {}
 
 export const createRoomBodySchema = z.object({
     name: z.string(),
@@ -26,3 +20,12 @@ export type CreateRoomRes = {
     createdAt: Date
     updatedAt: Date
 }
+
+export type GetAllRoomsRes = {
+    uuid: string
+    ownerId: string
+    name: string
+    occupancy: number
+    createdAt: Date
+    updatedAt: Date
+}[]

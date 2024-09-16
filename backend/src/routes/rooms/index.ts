@@ -5,27 +5,49 @@ import {
     createRoomBodySchema,
     CreateRoomRes,
     CreateRoomRoute,
+    GetAllRoomsRes,
+    GetAllRoomsRoute,
 } from "#src/routes/rooms/constants.js"
 import { FastifyPluginAsyncZod } from "fastify-type-provider-zod"
 
 const Rooms: FastifyPluginAsyncZod = async function (fastify): Promise<void> {
-    // fastify.get<GetAllRoomsRoute>(
-    //     "/:roomId",
-    //     {
-    //         onRequest: fastify.basicAuth,
-    //     },
-    //     async function (req) {
-    //         const { roomId } = req.params
-    //
-    //         return {
-    //             data: {
-    //                 rooms: [roomId],
-    //                 ip: req.ip,
-    //                 name: "room name",
-    //             },
-    //         }
-    //     }
-    // )
+    fastify.get<GetAllRoomsRoute>(
+        "/",
+        {
+            onRequest: fastify.basicAuth,
+        },
+        async function (req, reply) {
+            const { user } = req as AuthenticatedRequest<GetAllRoomsRoute>
+
+            const rooms = await roomsService.listRoomsOfUser(user.uuid)
+
+            if (rooms instanceof Error) {
+                logger.error(rooms)
+
+                return reply.internalServerError()
+            }
+
+            const res: GetAllRoomsRes = rooms
+                .map((room) => {
+                    const result: GetAllRoomsRes[number] = {
+                        uuid: room.uuid,
+                        ownerId: room.ownerId,
+                        name: room.name,
+                        occupancy: room.occupancy,
+                        createdAt: room.createdAt,
+                        updatedAt: room.updatedAt,
+                    }
+
+                    return result
+                })
+                .sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime())
+
+            return {
+                message: "Rooms found",
+                data: res,
+            }
+        }
+    )
 
     fastify.post<CreateRoomRoute>(
         "/",
