@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt"
 import { randomUUID } from "crypto"
-import { FastifyInstance } from "fastify"
+import { FastifyInstance, RouteGenericInterface } from "fastify"
 import basicAuthPlugin from "@fastify/basic-auth"
 import usersRepo from "#src/repo/users.js"
 import { FastifyRequest } from "fastify"
@@ -50,10 +50,11 @@ export type AuthCredentials = {
  * This type can be used in the type for routes for
  * casting request objects
  */
-export type AuthenticatedRequest = FastifyRequest & {
-    user: User
-    auth: AuthCredentials
-}
+export type AuthenticatedRequest<Route extends RouteGenericInterface> =
+    FastifyRequest<Route> & {
+        user: User
+        auth: AuthCredentials
+    }
 
 declare module "fastify" {
     interface FastifyRequest {

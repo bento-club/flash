@@ -1,24 +1,40 @@
-import db from "#src/repo/db.js"
-import { PrismaClient } from "@prisma/client"
+import db, { Repo } from "#src/repo/db.js"
+import { PrismaClient, Room } from "@prisma/client"
 
-class RoomsRepo {
-    db: PrismaClient
-
+export class RoomsRepo extends Repo {
     constructor(db: PrismaClient) {
-        this.db = db
+        super(db)
     }
 
-    async create(params: CreateRoomParams, db: PrismaClient = this.db) {
-        return db.room.create({
-            data: {
-                name: params.name,
-                ownerId: params.ownerId,
-            }
-        })
+    async create(
+        params: CreateRoomParams,
+    ): Promise<Room | Error> {
+        try {
+            return db.room.create({
+                data: {
+                    name: params.name,
+                    ownerId: params.ownerId,
+                },
+            })
+        } catch (err) {
+            return err as Error
+        }
+    }
+
+    async findByOwnerID(uuid: string): Promise<Room[] | Error> {
+        try {
+            return this.db.room.findMany({
+                where: {
+                    ownerId: uuid,
+                },
+            })
+        } catch (err) {
+            return err as Error
+        }
     }
 }
 
-type CreateRoomParams = {
+export type CreateRoomParams = {
     ownerId: string
     name: string
 }

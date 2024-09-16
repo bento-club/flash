@@ -9,7 +9,6 @@ export type GetAllRoomsRoute = {
 }
 
 export const createRoomBodySchema = z.object({
-    ownerId: z.string(),
     name: z.string(),
 })
 
@@ -17,4 +16,13 @@ export type CreateRoomBody = z.output<typeof createRoomBodySchema>
 
 export type CreateRoomRoute = {
     Body: CreateRoomBody
+}
+
+export type CreateRoomRes = {
+    uuid: string
+    ownerId: string
+    name: string
+    occupancy: number
+    createdAt: Date
+    updatedAt: Date
 }
