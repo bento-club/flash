@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "VITE_HOST=$(ipconfig getifaddr en0) vite --host",
+        "dev": "vite --host",
         "build": "npm run type-check && npm run build-only",
         "build-only": "vite build",
         "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
@@ -19,10 +19,12 @@
         "@fontsource/lexend": "^5.0.21",
         "@fontsource/space-grotesk": "^5.0.19",
         "@vueuse/core": "^11.0.3",
+        "ky": "^1.7.2",
         "lodash": "^4.17.21",
         "qrcode": "^1.5.4",
         "radix-vue": "^1.9.5",
         "tailwindcss-animate": "^1.0.7",
+        "vee-validate": "^4.13.2",
         "vue": "^3.5.1",
         "vue-router": "^4.4.3"
     },
