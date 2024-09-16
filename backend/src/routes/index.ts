@@ -23,7 +23,10 @@ const root: FastifyPluginAsyncZod = async (fastify): Promise<void> => {
                 return fastify.httpErrors.unauthorized(user.message)
             }
 
-            return user
+            return {
+                message: "User identified",
+                data: user,
+            }
         }
     )
 }

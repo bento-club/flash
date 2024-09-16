@@ -4,6 +4,7 @@ import { FastifyPluginAsync } from "fastify"
 import { fileURLToPath } from "url"
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod"
 import { decorateWithBasicAuth } from "#src/lib/auth.js"
+import cors from "@fastify/cors"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -23,7 +24,8 @@ const app: FastifyPluginAsync<AppOptions> = async (
     fastify.setValidatorCompiler(validatorCompiler)
     fastify.setSerializerCompiler(serializerCompiler)
 
-    decorateWithBasicAuth(fastify)
+    await decorateWithBasicAuth(fastify)
+    await fastify.register(cors)
 
     // Do not touch the following lines
 

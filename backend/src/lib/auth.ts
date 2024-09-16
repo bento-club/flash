@@ -66,12 +66,12 @@ declare module "fastify" {
 /**
  * Decorate the fastify server instance with basic auth authentication scheme
  */
-export function decorateWithBasicAuth(fastify: FastifyInstance) {
+export async function decorateWithBasicAuth(fastify: FastifyInstance) {
     //INFO: See https://fastify.dev/docs/latest/Reference/Decorators/#decorators
     fastify.decorateRequest("auth", null)
     fastify.decorateRequest("user", null)
 
-    fastify.register(basicAuthPlugin, {
+    await fastify.register(basicAuthPlugin, {
         authenticate: {
             realm: AUTH_REALM,
         },
