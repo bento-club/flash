@@ -3,6 +3,8 @@ import { randomUUID } from "crypto"
 import { FastifyInstance } from "fastify"
 import basicAuthPlugin from "@fastify/basic-auth"
 import usersRepo from "#src/repo/users.js"
+import { FastifyRequest } from "fastify"
+import { User } from "@prisma/client"
 
 /**
  * Provide functions cryptographic security functions
@@ -39,18 +41,41 @@ export function createToken(): string {
 
 export const AUTH_REALM = "flash-app"
 
+export type AuthCredentials = {
+    username: string
+    password: string
+}
+
+/**
+ * This type can be used in the type for routes for
+ * casting request objects
+ */
+export type AuthenticatedRequest = FastifyRequest & {
+    user: User
+    auth: AuthCredentials
+}
+
+declare module "fastify" {
+    interface FastifyRequest {
+        user: User | null
+        auth: AuthCredentials | null
+    }
+}
+
 /**
  * Decorate the fastify server instance with basic auth authentication scheme
  */
 export function decorateWithBasicAuth(fastify: FastifyInstance) {
+    //INFO: See https://fastify.dev/docs/latest/Reference/Decorators/#decorators
+    fastify.decorateRequest("auth", null)
+    fastify.decorateRequest("user", null)
+
     fastify.register(basicAuthPlugin, {
         authenticate: {
             realm: AUTH_REALM,
         },
-        async validate(username, password, _req, reply) {
+        async validate(username, password, req, reply) {
             const user = await usersRepo.findByUUID(username)
-            console.log("username: ", username)
-            console.log("password: ", password)
 
             if (user instanceof Error || !user) {
                 return reply.unauthorized("User not found")
@@ -60,6 +85,12 @@ export function decorateWithBasicAuth(fastify: FastifyInstance) {
 
             if (!isValidPassword) {
                 return reply.unauthorized("Invalid password")
+            }
+
+            req.user = user
+            req.auth = {
+                username,
+                password,
             }
         },
     })
