@@ -5,7 +5,7 @@
                 <h1
                     class="font-space-grotesk text-heading-medium font-bold text-primary"
                 >
-                    Hey, Shadow! 👋
+                    Hey, {{name}}! 👋
                 </h1>
                 <p class="mt-x2 text-sm text-[#CBD5E1]">
                     Share files by joining or creating a room
@@ -61,6 +61,7 @@ import SpaceCard from "#src/components/SpaceCard.vue"
 import PlusIcon from "#src/icons/PlusIcon.vue"
 import BaseLayout from "#src/layouts/BaseLayout.vue"
 import useRoomsService from "#src/services/rooms"
+import useAppStore from "#src/store/app"
 import useRoomStore from "#src/store/rooms"
 import { onMounted, ref } from "vue"
 
@@ -69,6 +70,7 @@ type State = "listing" | "create"
 const state = ref<State>("listing")
 
 const { rooms } = useRoomStore()
+const { name } = useAppStore()
 const roomsService = useRoomsService()
 
 function openCreateSpaceModal() {
