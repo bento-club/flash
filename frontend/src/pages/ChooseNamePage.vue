@@ -45,11 +45,15 @@ async function handleChooseName() {
     }
 }
 
-watch([name, token], () => {
-    if (name.value && token.value) {
-        router.push({ name: "listSpaces" })
-    }
-})
+watch(
+    [name, token],
+    () => {
+        if (name.value && token.value) {
+            router.replace({ name: "listSpaces" })
+        }
+    },
+    { immediate: true },
+)
 </script>
 
 <style scoped></style>

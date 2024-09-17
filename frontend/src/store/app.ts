@@ -1,3 +1,4 @@
+import { syncWithLocalStorage } from "#src/store/utils"
 import { reactive, toRefs } from "vue"
 
 export const appState = reactive({
@@ -5,6 +6,10 @@ export const appState = reactive({
     name: "",
     token: "",
 })
+
+const APP_STATE_KEY = "appState"
+
+syncWithLocalStorage(APP_STATE_KEY, appState)
 
 export default function useAppStore() {
     const { uuid, name, token } = toRefs(appState)
@@ -15,4 +20,3 @@ export default function useAppStore() {
         token,
     }
 }
-
