@@ -22,21 +22,11 @@
 
                     <div class="mt-x3 flex flex-col gap-x6">
                         <SpaceCard
-                            type="local"
-                            :created-at="new Date()"
-                            name="local network space"
-                        />
-                        <SpaceCard
-                            state="active"
-                            name="Milky way galaxy"
-                            :created-at="new Date()"
-                            :count="14"
-                        />
-                        <SpaceCard
-                            state="active"
-                            name="andromeda"
-                            :created-at="new Date()"
-                            :count="69"
+                            v-for="room in rooms"
+                            :key="room.uuid"
+                            type="space"
+                            :created-at="room.createdAt"
+                            :name="room.name"
                         />
                     </div>
                 </div>
@@ -65,31 +55,38 @@
 </template>
 
 <script setup lang="ts">
-import AppButton from "#src/components/AppButton.vue";
-import CreateSpaceDialog from "#src/components/CreateSpaceDialog.vue";
-import SpaceCard from "#src/components/SpaceCard.vue";
-import PlusIcon from "#src/icons/PlusIcon.vue";
-import BaseLayout from "#src/layouts/BaseLayout.vue";
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import AppButton from "#src/components/AppButton.vue"
+import CreateSpaceDialog from "#src/components/CreateSpaceDialog.vue"
+import SpaceCard from "#src/components/SpaceCard.vue"
+import PlusIcon from "#src/icons/PlusIcon.vue"
+import BaseLayout from "#src/layouts/BaseLayout.vue"
+import useRoomsService from "#src/services/rooms"
+import useRoomStore from "#src/store/rooms"
+import { onMounted, ref } from "vue"
 
-type State = "listing" | "create";
+type State = "listing" | "create"
 
-const state = ref<State>("listing");
+const state = ref<State>("listing")
+
+const { rooms } = useRoomStore()
+const roomsService = useRoomsService()
 
 function openCreateSpaceModal() {
-    state.value = "create";
+    state.value = "create"
+    roomsService.getAllRooms()
 }
 
 function closeCreateSpaceModal() {
-    state.value = "listing";
+    state.value = "listing"
 }
 
-const router = useRouter();
-
-function createSpace(name: string) {
-    router.push({ name: "space", params: { name: name } });
+async function createSpace(name: string) {
+    roomsService.createRoom({ name })
 }
+
+onMounted(async () => {
+    await roomsService.getAllRooms()
+})
 </script>
 
 <style scoped lang="scss"></style>

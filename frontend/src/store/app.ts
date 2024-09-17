@@ -1,13 +1,13 @@
 import { reactive, toRefs } from "vue"
 
-const state = reactive({
+export const appState = reactive({
     uuid: "",
     name: "",
     token: "",
 })
 
 export default function useAppStore() {
-    const { uuid, name, token } = toRefs(state)
+    const { uuid, name, token } = toRefs(appState)
 
     return {
         uuid,
@@ -15,3 +15,4 @@ export default function useAppStore() {
         token,
     }
 }
+

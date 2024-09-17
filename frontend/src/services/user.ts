@@ -1,4 +1,4 @@
-import { identify as identifyAPI } from "#src/api/user"
+import { identify as identifyAPI } from "#src/api/users"
 import { uuid } from "#src/lib/auth"
 import useAppStore from "#src/store/app"
 
