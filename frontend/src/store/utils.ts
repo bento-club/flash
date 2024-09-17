@@ -1,5 +1,4 @@
-import { debounce } from "lodash"
-import { isRef, watchEffect, type Reactive, type Ref } from "vue"
+import { isRef, type Reactive, type Ref } from "vue"
 
 export function syncWithLocalStorage(
     key: string,
@@ -18,12 +17,10 @@ export function syncWithLocalStorage(
         }
     }
 
-    const throttledWrite = debounce(() => {
+    window.addEventListener("beforeunload", () => {
         localStorage.setItem(
             key,
             JSON.stringify(isRef(state) ? state.value : state),
         )
-    }, 500)
-
-    watchEffect(throttledWrite)
+    })
 }
