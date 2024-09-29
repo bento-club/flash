@@ -4,6 +4,10 @@ export type GetAllRoomsRoute = {}
 
 export const createRoomBodySchema = z.object({
     name: z.string(),
+    SDPOffer: z.object({
+        type: z.enum(["offer"]),
+        sdp: z.string(),
+    })
 })
 
 export type CreateRoomBody = z.output<typeof createRoomBodySchema>

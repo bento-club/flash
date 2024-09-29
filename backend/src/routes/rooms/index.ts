@@ -63,6 +63,7 @@ const Rooms: FastifyPluginAsyncZod = async function (fastify): Promise<void> {
             const created = await roomsService.createRoom({
                 name: body.name,
                 ownerId: user.uuid,
+                SDPOffer: body.SDPOffer,
             })
 
             if (created instanceof Error) {

@@ -31,6 +31,7 @@ model Room {
   name      String
   users     User[]
   occupancy Int    @default(0)
+  SDPOffer  String @default("") @map("sdp_offer")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @updatedAt() @map("updated_at")
